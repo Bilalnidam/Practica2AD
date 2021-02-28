@@ -5,15 +5,15 @@ import java.io.*;
 public class Leer {
 
 	static public String pedirCadena() {
-		BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in));
+		BufferedReader datoIntro = new BufferedReader(new InputStreamReader(System.in));
 		String dato = "";
 		boolean error = true;
 		while (error) {
 			try {
-				dato = dataIn.readLine();
+				dato = datoIntro.readLine();
 				error = false;
 			} catch (IOException e) {
-				System.out.println("Vuelva a introducir el dato : ");
+				System.out.println("introduce el dato otra vez : ");
 				error = true;
 			}
 		}
@@ -21,19 +21,19 @@ public class Leer {
 	}
 
 	static public int pedirEnteroValidar() {
-		BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in));
+		BufferedReader datoIntro = new BufferedReader(new InputStreamReader(System.in));
 		int dato = 0;
 		boolean error = true;
 		while (error) {
 			try {
-				dato = Integer.parseInt(dataIn.readLine());
+				dato = Integer.parseInt(datoIntro.readLine());
 				error = false;
 			} catch (IOException e) {
-				System.out.println("Vuelva a introducir el dato ");
+				System.out.println("introduce el dato de nuevo ");
 				error = true;
 			} catch (NumberFormatException e) {
-				System.out.println("El dato introducido no es entero");
-				System.out.println("Vuelva a introducir el dato : ");
+				System.out.println("El dato no es entero");
+				System.out.println("introduce el dato otra vez : ");
 				error = true;
 			}
 		}
@@ -42,19 +42,19 @@ public class Leer {
 	}
 
 	static public double pedirDecimal() {
-		BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in));
+		BufferedReader datoIntro = new BufferedReader(new InputStreamReader(System.in));
 		double dato = 0;
 		boolean error = true;
 		while (error) {
 			try {
-				dato = Double.parseDouble(dataIn.readLine());
+				dato = Double.parseDouble(datoIntro.readLine());
 				error = false;
 			} catch (IOException e) {
-				System.out.println("Vuelva a introducir el dato : ");
+				System.out.println("introduce el dato de nuevo : ");
 				error = true;
 			} catch (NumberFormatException e) {
-				System.out.println("El dato introducido no es un numero");
-				System.out.println("Vuelva a introducir el dato : ");
+				System.out.println("El dato no es entero");
+				System.out.println("introduce el dato otra vez : ");
 				error = true;
 			}
 		}
@@ -62,19 +62,19 @@ public class Leer {
 	}
 
 	static public float pedirFloat() {
-		BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in));
+		BufferedReader datoIntro = new BufferedReader(new InputStreamReader(System.in));
 		float dato = 0;
 		boolean error = true;
 		while (error) {
 			try {
-				dato = Float.parseFloat(dataIn.readLine());
+				dato = Float.parseFloat(datoIntro.readLine());
 				error = false;
 			} catch (IOException e) {
-				System.out.println("Vuelva a introducir el dato : ");
+				System.out.println("introduce el dato de nuevo: ");
 				error = true;
 			} catch (NumberFormatException e) {
-				System.out.println("El dato introducido no es un numero");
-				System.out.println("Vuelva a introducir el dato : ");
+				System.out.println("El dato no es entero");
+				System.out.println("introduce el dato otra vez : ");
 				error = true;
 			}
 		}

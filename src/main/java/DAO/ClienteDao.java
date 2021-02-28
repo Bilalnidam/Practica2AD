@@ -12,34 +12,34 @@ import org.hibernate.query.Query;
 
 public class ClienteDao implements Dao<Cliente> {
 
-	Cliente c = new Cliente();
+	Cliente v = new Cliente();
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public List<Cliente> getAll() {
-		Session s = HibernateUtil.getSession();
-		Query q = s.createQuery("select e from Cliente e order by nombre_cliente");
-		List<Cliente> todosLosClientes = q.getResultList();
-		for (Cliente cliente : todosLosClientes) {
+		Session r = HibernateUtil.getSession();
+		Query q = r.createQuery("select e from Cliente e order by nombre_cliente");
+		List<Cliente> allClientes = q.getResultList();
+		for (Cliente cliente : allClientes) {
 			System.out.println(cliente);
 		}
-		return todosLosClientes;
+		return allClientes;
 	}
 
 	public Cliente getById(Long id) {
-		Session s = HibernateUtil.getSession();
+		Session r = HibernateUtil.getSession();
 
 		System.out.println("introduce el ID para buscar en la Base de Datos");
-		c = s.find(Cliente.class, Leer.pedirEnteroValidar());
+		v = r.find(Cliente.class, Leer.pedirEnteroValidar());
 		System.out.println("Cliente encontrado");
-		System.out.println(c);
-		return c;
+		System.out.println(v);
+		return v;
 	}
 
 	public void create(Cliente cliente) {
-		Session s = HibernateUtil.getSession();
-		Transaction transaction = s.beginTransaction();
+		Session r = HibernateUtil.getSession();
+		Transaction transaccion = r.beginTransaction();
 
-		// PEDIMOS LOS DATOS PARA OBTENER EL CLIENTE
+		
 		System.out.println("Codigo del cliente");
 		cliente.setCodigoCliente(Leer.pedirEnteroValidar());
 
@@ -82,24 +82,24 @@ public class ClienteDao implements Dao<Cliente> {
 		System.out.println("Limite de credito: ");
 		cliente.setLimiteCredito(Leer.pedirDecimal());
 
-		s.save(cliente);
-		transaction.commit();
+		r.save(cliente);
+		transaccion.commit();
 		System.out.println("Cliente creado en la Base de Datos");
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public List<Cliente> buscar() {
-		Session s = HibernateUtil.getSession();
+		Session r = HibernateUtil.getSession();
 		System.out.println("introduce el nombre, el contacto o el apellido del cliente");
-		String busqueda = Leer.pedirCadena();
-		Query q = s.createQuery(
-				"select e from Cliente e where nombre_cliente = '" + busqueda + "'" + " or nombre_contacto = '"
-						+ busqueda + "' or apellido_contacto = '" + busqueda + "' order by nombre_cliente");
-		List<Cliente> todosLosClientes = q.getResultList();
-		for (Cliente cliente : todosLosClientes) {
+		String buscar = Leer.pedirCadena();
+		Query q = r.createQuery(
+				"select e from Cliente e where nombre_cliente = '" + buscar + "'" + " or nombre_contacto = '"
+						+ buscar + "' or apellido_contacto = '" + buscar + "' order by nombre_cliente");
+		List<Cliente> allClientes = q.getResultList();
+		for (Cliente cliente : allClientes) {
 			System.out.println(cliente);
 		}
-		return todosLosClientes;
+		return allClientes;
 	}
 
 	public void update(Cliente cliente) {
